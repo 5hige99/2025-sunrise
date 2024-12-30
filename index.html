@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初日の出アニメーション</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #0c1445 0%, #5b6d9b 50%, #ff9966 100%);
+            overflow: hidden;
+            animation: sky-color 20s ease-out forwards;
+        }
+        .scene {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .sun {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #fff700 0%, #ff8800 70%);
+            border-radius: 50%;
+            position: absolute;
+            bottom: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 70px #ff8800;
+            animation: sunrise 20s ease-out forwards;
+        }
+        .sea {
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to bottom, #0066cc, #003366);
+            position: absolute;
+            bottom: 0;
+            overflow: hidden;
+        }
+        .reflection {
+            width: 150px;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(255,255,0,0.5) 0%, rgba(255,136,0,0.3) 50%, rgba(0,102,204,0) 100%);
+            position: absolute;
+            bottom: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            filter: blur(5px);
+            animation: reflection 20s ease-out forwards;
+        }
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            bottom: -25%;
+            left: -50%;
+            border-radius: 43%;
+        }
+        .wave:nth-child(1) {
+            animation: wave 13s linear infinite;
+            opacity: 0.8;
+            background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.2) 70%);
+        }
+        .wave:nth-child(2) {
+            animation: wave 7s linear infinite;
+            opacity: 0.6;
+            background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.1) 70%);
+        }
+        .wave:nth-child(3) {
+            animation: wave 5s linear infinite;
+            opacity: 0.4;
+            background: radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.05) 70%);
+        }
+        @keyframes sunrise {
+            0% {
+                transform: translate(-50%, 100px);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -400px);
+            }
+        }
+        @keyframes reflection {
+            0% {
+                transform: translate(-50%, 0) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(-50%, -400px) scale(2);
+                opacity: 1;
+            }
+        }
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes sky-color {
+            0% {
+                background: linear-gradient(to bottom, #0c1445 0%, #182848 50%, #2b5876 100%);
+            }
+            100% {
+                background: linear-gradient(to bottom, #1e5799 0%, #7db9e8 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="sun"></div>
+        <div class="sea">
+            <div class="reflection"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+    </div>
+</body>
+</html>
